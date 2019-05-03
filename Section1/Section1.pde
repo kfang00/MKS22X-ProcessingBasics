@@ -42,7 +42,12 @@ class Visualizer {
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
     fill(255, 0, 0);
-    rect(x+40, y+100, 60, 50);
+    for (int a = 0; a < values.length; a++) {
+      if () {
+        
+      rect(x+40+(a*40), y+100, 40, values[a]);
+    }
+    
     fill(0, 255, 0);
     rect(x+120, y+50, 60, 50);
 
