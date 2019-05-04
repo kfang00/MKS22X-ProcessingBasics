@@ -57,19 +57,6 @@ class Visualizer {
       else if ((values[a] < 0) && (values[a] >= -100)) {
         fill(255, 128 + values[a], 0);
       }
-      //else if ((values[a] <= -50) && (values[a] > -100)) {
-        //fill(255, 0, 0);
-      //}
-      /*if (speeds[a] < 0) {
-        red += Math.abs(speeds[a]) * 1.275;
-        green -= Math.abs(speeds[a]) * 1.275;
-        fill(255, green, 0);
-      }
-      else {
-        red -= Math.abs(speeds[a]) * 1.275;
-        green += Math.abs(speeds[a]) * 1.275;
-        fill(255, green, 0);
-      }*/
   
       rect(sx + (a * (400.0/bars)), sy, (400.0/bars), values[a] * -1);
     }
