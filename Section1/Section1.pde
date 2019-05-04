@@ -42,17 +42,13 @@ class Visualizer {
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
     fill(255, 0, 0);
-    int sx = x + 40;
-    int sy = y + 100;
+    float sx = x ;
+    float sy = y + 100;
     for (int a = 0; a < values.length; a++) {
-      sx += (a * 40);
-      if () {
-      
-      rect(sx, sy, 40, values[a]);
+      rect(sx + (a * 40), sy, 40, values[a]);
     }
     
     fill(0, 255, 0);
-    rect(x+120, y+50, 60, 50);
 
 
     //Width of the visualizer is 400!
@@ -64,7 +60,9 @@ class Visualizer {
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; //the speed updates the values. Do not touch this.
       //??? keep them values between max/min value so they stay in the box.
-
+      if ((values[i] < -100) || (values[i] > 100)) {
+        speeds[i] = speeds[i] * -1;
+      }
       //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
 
       
