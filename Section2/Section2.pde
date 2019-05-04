@@ -21,6 +21,7 @@ void gasket(int levels, float v1x, float v1y, float v2x, float v2y, float v3x, f
       return;
     }
     else {
+      fill(255, levels * 15, 0);
       triangle(v1x, v1y, v2x, v2y, v3x, v3y);
       gasket(levels - 1,(v2x + v3x)/2, (v2y + v3y)/2, ((v1x + v3x)/2) + side, (v2y + v3y)/2, v2x, v3y);
       gasket(levels - 1,((v2x + v3x)/2) - side, (v1y + v3y)/2, (v1x + v3x)/2, (v1y + v3y)/2, v1x, v3y);
@@ -33,6 +34,7 @@ void draw() {
   
   fill(255);
   text("Click the mouse to increase levels, press a key to decrease levels",20,20);
+  fill(255,0,0);
   triangle(0, height-10, width, height-10, width/2, 10);
   gasket(levels,(0 + (width/2))/2, height/2, (width+(width/2))/2, height/2, width/2, height-10);
 
