@@ -1,6 +1,7 @@
 
 int MAX_VALUE = 100;
 int MIN_VALUE = -100;
+
 Visualizer v;
 
 /*You are simulating a visualizer of multiple values
@@ -11,11 +12,12 @@ class Visualizer {
   float x, y;
   float [] values;
   float [] speeds;
+  int bars = int(random(1, 41));
   Visualizer(float x, float y) {
     this.x = x;
     this.y = y;
-    values = new float[10];
-    speeds = new float[10];
+    values = new float[bars];
+    speeds = new float[bars];
     for (int i = 0; i < values.length; i++) {
       values[i] = random(-99, 99);
       speeds[i] = random(2);
@@ -41,14 +43,38 @@ class Visualizer {
 
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
-    fill(255, 0, 0);
+    //fill(255, 0, 0);
     float sx = x ;
     float sy = y + 100;
+
     for (int a = 0; a < values.length; a++) {
-      rect(sx + (a * 40), sy, 40, values[a]);
+      if ((values[a] > 50) && (values[a] <= 100)) {
+        fill(0 + (265 - values[a]), 265 - (105 - values[a]), 0);
+      }
+      else if ((values[a] <= 50) && (values[a] > 0)) {
+        fill(255, 250 - (50 - values[a]), 0);
+      }
+      else if ((values[a] < 0) && (values[a] >= -100)) {
+        fill(255, 128 + values[a], 0);
+      }
+      //else if ((values[a] <= -50) && (values[a] > -100)) {
+        //fill(255, 0, 0);
+      //}
+      /*if (speeds[a] < 0) {
+        red += Math.abs(speeds[a]) * 1.275;
+        green -= Math.abs(speeds[a]) * 1.275;
+        fill(255, green, 0);
+      }
+      else {
+        red -= Math.abs(speeds[a]) * 1.275;
+        green += Math.abs(speeds[a]) * 1.275;
+        fill(255, green, 0);
+      }*/
+  
+      rect(sx + (a * (400.0/bars)), sy, (400.0/bars), values[a] * -1);
     }
     
-    fill(0, 255, 0);
+   // fill(0, 255, 0);
 
 
     //Width of the visualizer is 400!
@@ -57,6 +83,7 @@ class Visualizer {
   }
   void update() {
     //???WRITE THIS METHOD SECOND!!!
+    
     for (int i = 0; i < values.length; i++) {
       values[i] += speeds[i]; //the speed updates the values. Do not touch this.
       //??? keep them values between max/min value so they stay in the box.
@@ -73,6 +100,8 @@ class Visualizer {
 void setup() {
   size(600, 500);
   v = new Visualizer(20, 20);
+  int green = 255;
+  int red = 100;
 }
 void draw() {
   background(255);
